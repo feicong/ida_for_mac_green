@@ -3,6 +3,8 @@
 export IDA_PLUGINS_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS/plugins
 export IDA_PYTHON_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS/python
 
+echo 'sys.path.append(os.path.join(sys.executable, IDAPYTHON_DYNLOAD_BASE, "python", "lib", "python2.7", "site-packages"))' >> $IDA_PYTHON_PATH/init.py
+
 cd $PLUGINS_PATH
 mkdir git
 cd git

@@ -7,7 +7,7 @@
 + macOS系统的电脑
 
 ## 使用
-安装IDA Pro到/Applications目录下，打开终端执行：
+安装IDA Pro到/Applications目录下，打开终端执行：
 ```
 $ green.sh
 ```
