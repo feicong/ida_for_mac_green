@@ -5,7 +5,7 @@ export IDA_PYTHON_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS/python
 
 echo 'sys.path.append(os.path.join(sys.executable, IDAPYTHON_DYNLOAD_BASE, "python", "lib", "python2.7", "site-packages"))' >> $IDA_PYTHON_PATH/init.py
 
-cd $PLUGINS_PATH
+cd $IDA_PLUGINS_PATH
 mkdir git
 cd git
 
@@ -102,8 +102,8 @@ ln -s -f $IDA_PLUGINS_PATH/git/lighthouse/plugin/lighthouse $IDA_PLUGINS_PATH/li
 
 # HexRaysPyTools
 git clone https://github.com/igogo-x86/HexRaysPyTools
-ln -s -f $IDA_PLUGINS_PATH/git/lighthouse/HexRaysPyTools.py $IDA_PLUGINS_PATH/HexRaysPyTools.py
-ln -s -f $IDA_PLUGINS_PATH/git/lighthouse/HexRaysPyTools $IDA_PLUGINS_PATH/HexRaysPyTools
+ln -s -f $IDA_PLUGINS_PATH/git/HexRaysPyTools/HexRaysPyTools.py $IDA_PLUGINS_PATH/HexRaysPyTools.py
+ln -s -f $IDA_PLUGINS_PATH/git/HexRaysPyTools/HexRaysPyTools $IDA_PLUGINS_PATH/HexRaysPyTools
 
 # ida-images
 git clone https://github.com/rr-/ida-images
