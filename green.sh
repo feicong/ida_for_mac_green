@@ -118,3 +118,20 @@ ln -s -f $IDA_PLUGINS_PATH/git/prefix/plugin/prefix $IDA_PLUGINS_PATH/prefix
 # pytest-idapro
 git clone https://github.com/nirizr/pytest-idapro
 
+# ida-swift-demangle
+git clone https://github.com/tobefuturer/ida-swift-demangle
+
+# android-scripts
+git clone https://github.com/strazzere/android-scripts
+
+# idapython_virtualenv
+git clone https://github.com/Kerrigan29a/idapython_virtualenv
+
+# nrs
+#git clone https://github.com/isra17/nrs
+CFLAGS=-m32 LDFLAGS=-m32 python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" nrs
+
+# FRIEND
+# git clone https://github.com/alexhude/FRIEND
+
+
