@@ -133,5 +133,45 @@ CFLAGS=-m32 LDFLAGS=-m32 python -m pip install --ignore-installed --no-cache-dir
 
 # FRIEND
 # git clone https://github.com/alexhude/FRIEND
+# for 6.95
+cp -f 6.95/FRIEND.pmc $IDA_PLUGINS_PATH/FRIEND.pmc
+cp -f 6.95/FRIEND.pmc64 $IDA_PLUGINS_PATH/FRIEND.pmc64
+
+# Free_the_Debuggers
+git clone https://github.com/techbliss/Free_the_Debuggers
+ln -s -f $IDA_PLUGINS_PATH/git/Free_the_Debuggers/Free_The_Debuggers.py $IDA_PLUGINS_PATH/Free_The_Debuggers.py
+
+# HexRaysCodeXplorer
+git clone https://github.com/REhints/HexRaysCodeXplorer
+# for 6.8
+#curl -o $IDA_PLUGINS_PATH/HexRaysCodeXplorer.pmc64 https://raw.githubusercontent.com/REhints/HexRaysCodeXplorer/master/bin/v2.0%20%5BBlackHat%20Edition%5D/IDA%20v6.8/Mac/HexRaysCodeXplorer.pmc64
+#curl -o $IDA_PLUGINS_PATH/HexRaysCodeXplorer.pmc https://raw.githubusercontent.com/REhints/HexRaysCodeXplorer/master/bin/v2.0%20%5BBlackHat%20Edition%5D/IDA%20v6.8/Mac/HexRaysCodeXplorer.pmc
+# for 6.95
+curl -o $IDA_PLUGINS_PATH/HexRaysCodeXplorer.pmc64 https://raw.githubusercontent.com/REhints/HexRaysCodeXplorer/master/bin/Hex-Rays%20Plugin%20contest/2015/Mac/HexRaysCodeXplorer.pmc64
+curl -o $IDA_PLUGINS_PATH/HexRaysCodeXplorer.pmc https://raw.githubusercontent.com/REhints/HexRaysCodeXplorer/master/bin/Hex-Rays%20Plugin%20contest/2015/Mac/HexRaysCodeXplorer.pmc
+
+# findcrypt
+# for 6.95
+cp -f 6.95/findcrypt.pmc $IDA_PLUGINS_PATH/findcrypt.pmc
+cp -f 6.95/findcrypt.pmc64 $IDA_PLUGINS_PATH/findcrypt.pmc64
+
+# hexrays_hlight
+cp -f py/hexrays_hlight.py $IDA_PLUGINS_PATH/hexrays_hlight.py
+
+# VMAttack
+git clone https://github.com/anatolikalysch/VMAttack
+echo 'export VMAttack=$IDA_PLUGINS_PATH/VMAttack' >> ~/.bash_profile
+python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" distorm3
+python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" idacute
+ln -s -f $IDA_PLUGINS_PATH/git/VMAttack/VMAttack_plugin_stub.py $IDA_PLUGINS_PATH/VMAttack_plugin_stub.py
+
+# BinDiff
+cp -f 6.95/zynamics_bindiff_4_3.pmc $IDA_PLUGINS_PATH/zynamics_bindiff_4_3.pmc
+cp -f 6.95/zynamics_bindiff_4_3.pmc64 $IDA_PLUGINS_PATH/zynamics_bindiff_4_3.pmc64
+cp -f 6.95/zynamics_binexport_9.pmc $IDA_PLUGINS_PATH/zynamics_binexport_9.pmc
+cp -f 6.95/zynamics_binexport_9.pmc64 $IDA_PLUGINS_PATH/zynamics_binexport_9.pmc64
+
+
+
 
 
