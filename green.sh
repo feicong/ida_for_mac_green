@@ -1,9 +1,15 @@
 # ida plugins installer by fei_cong.
 
-export IDA_PLUGINS_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS/plugins
-export IDA_PYTHON_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS/python
+export IDA_INSTALL_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS
+export IDA_PLUGINS_PATH=$IDA_INSTALL_PATH/plugins
+export IDA_PROCS_PATH=$IDA_INSTALL_PATH/procs
+export IDA_LOADERS_PATH=$IDA_INSTALL_PATH/loaders
+export IDA_PYTHON_PATH=$IDA_INSTALL_PATH/python
 
 echo 'sys.path.append(os.path.join(sys.executable, IDAPYTHON_DYNLOAD_BASE, "python", "lib", "python2.7", "site-packages"))' >> $IDA_PYTHON_PATH/init.py
+
+ln -s -f $IDA_PYTHON_PATH/lib/python2.7/site-packages/unicorn/lib/libunicorn.dylib $IDA_INSTALL_PATH/libunicorn.dylib
+ln -s -f $IDA_PYTHON_PATH/lib/python2.7/site-packages/unicorn/lib/libunicorn.dylib $IDA_INSTALL_PATH/libunicorn.1.dylib
 
 cd $IDA_PLUGINS_PATH
 mkdir git
@@ -37,7 +43,7 @@ ln -s -f $IDA_PLUGINS_PATH/git/idaemu/idaemu.py $IDA_PLUGINS_PATH/idaemu.py
 
 # Rematch
 # python -m pip install rematch-idaplugin --target="$IDA_PLUGINS_PATH"
-git clone https://github.com/nirizr/rematch
+git clone  --recurse-submodules https://github.com/nirizr/rematch
 ln -s -f $IDA_PLUGINS_PATH/git/rematch/idaplugin/plugin_rematch.py $IDA_PLUGINS_PATH/plugin_rematch.py
 ln -s -f $IDA_PLUGINS_PATH/git/rematch/idaplugin/rematch $IDA_PLUGINS_PATH/rematch
 
@@ -84,6 +90,9 @@ curl -o $IDA_PLUGINS_PATH/ponce_x86_IDA68_mac.pmc https://raw.githubusercontent.
 # TODO check git committed plugin version.
 curl -o $IDA_PLUGINS_PATH/sk3wldbg_user.pmc64 https://raw.githubusercontent.com/cseagle/sk3wldbg/master/bins/mac/sk3wldbg_user.pmc64
 curl -o $IDA_PLUGINS_PATH/sk3wldbg_user.pmc https://raw.githubusercontent.com/cseagle/sk3wldbg/master/bins/mac/sk3wldbg_user.pmc
+install_name_tool -change libunicorn.1.dylib @executable_path/libunicorn.1.dylib $IDA_PLUGINS_PATH/sk3wldbg_user.pmc
+install_name_tool -change libunicorn.1.dylib @executable_path/libunicorn.1.dylib $IDA_PLUGINS_PATH/sk3wldbg_user.pmc64
+
 
 # IDA-Function-Tagger
 git clone https://github.com/alessandrogario/IDA-Function-Tagger
@@ -171,7 +180,54 @@ cp -f 6.95/zynamics_bindiff_4_3.pmc64 $IDA_PLUGINS_PATH/zynamics_bindiff_4_3.pmc
 cp -f 6.95/zynamics_binexport_9.pmc $IDA_PLUGINS_PATH/zynamics_binexport_9.pmc
 cp -f 6.95/zynamics_binexport_9.pmc64 $IDA_PLUGINS_PATH/zynamics_binexport_9.pmc64
 
+# DrGadget
+git clone https://github.com/patois/DrGadget
+ln -s -f $IDA_PLUGINS_PATH/git/DrGadget/drgadget.py $IDA_PLUGINS_PATH/drgadget.py
+ln -s -f $IDA_PLUGINS_PATH/git/DrGadget/drgadget $IDA_PLUGINS_PATH/drgadget
 
+# syms2elf
+git clone https://github.com/danigargu/syms2elf
+ln -s -f $IDA_PLUGINS_PATH/git/syms2elf/syms2elf.py $IDA_PLUGINS_PATH/syms2elf.py
 
+# ida-scripts
+git clone https://github.com/danigargu/ida-scripts
+
+# x86emu
+# for 6.8
+#curl -o $IDA_PLUGINS_PATH/x86emu_qt.pmc http://www.idabook.com/x86emu/mac32/ida68/x86emu_qt.pmc
+#curl -o $IDA_PLUGINS_PATH/x86emu_qt.pmc64 http://www.idabook.com/x86emu/mac64/ida68/x86emu_qt.pmc64
+# for 6.9
+#curl -o $IDA_PLUGINS_PATH/x86emu_qt.pmc http://www.idabook.com/x86emu/mac32/ida69/x86emu_qt.pmc
+#curl -o $IDA_PLUGINS_PATH/x86emu_qt.pmc64 http://www.idabook.com/x86emu/mac64/ida69/x86emu_qt.pmc64
+# git clone https://github.com/cseagle/x86emu
+# for 6.95
+curl -o $IDA_PLUGINS_PATH/x86emu_qt.pmc https://raw.githubusercontent.com/cseagle/x86emu/master/bin/mac32/ida695/x86emu_qt.pmc
+curl -o $IDA_PLUGINS_PATH/x86emu_qt.pmc64 https://raw.githubusercontent.com/cseagle/x86emu/master/bin/mac64/ida695/x86emu_qt.pmc64
+
+# ida_clemency
+git clone https://github.com/cseagle/ida_clemency
+ln -s -f $IDA_PLUGINS_PATH/git/ida_clemency/clemency_dump.py $IDA_PLUGINS_PATH/clemency_dump.py
+ln -s -f $IDA_PLUGINS_PATH/git/ida_clemency/clemency_fix.py $IDA_PLUGINS_PATH/clemency_fix.py
+ln -s -f $IDA_PLUGINS_PATH/git/ida_clemency/clemency_proc.py $IDA_PROCS_PATH/clemency_proc.py
+ln -s -f $IDA_PLUGINS_PATH/git/ida_clemency/clemency_ldr.py $IDA_LOADERS_PATH/clemency_ldr.py
+
+# collabREate
+# git clone https://github.com/cseagle/collabREate
+# TODO need compile.
+
+# dwarfexport
+#git clone https://github.com/ALSchwalm/dwarfexport
+curl -o $IDA_PLUGINS_PATH/dwarfexport.pmc https://raw.githubusercontent.com/ALSchwalm/dwarfexport/master/bin/dwarfexport.pmc
+curl -o $IDA_PLUGINS_PATH/dwarfexport.pmc64 https://raw.githubusercontent.com/ALSchwalm/dwarfexport/master/bin/dwarfexport.pmc64
+
+# ida-cmake
+git clone https://github.com/zyantific/ida-cmake
+
+# IDASkins
+# git clone https://github.com/zyantific/IDASkins
+# for ida 6.95
+cp -f 6.95/IDASkins.pmc $IDA_PLUGINS_PATH/IDASkins.pmc
+cp -f 6.95/IDASkins.pmc64 $IDA_PLUGINS_PATH/IDASkins.pmc64
+cp -f 6.95/skin $IDA_INSTALL_PATH/skin
 
 
