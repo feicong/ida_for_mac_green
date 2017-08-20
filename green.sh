@@ -85,6 +85,9 @@ curl -o $IDA_PLUGINS_PATH/ponce_x86_IDA68_mac.pmc https://raw.githubusercontent.
 curl -o $IDA_PLUGINS_PATH/sk3wldbg_user.pmc64 https://raw.githubusercontent.com/cseagle/sk3wldbg/master/bins/mac/sk3wldbg_user.pmc64
 curl -o $IDA_PLUGINS_PATH/sk3wldbg_user.pmc https://raw.githubusercontent.com/cseagle/sk3wldbg/master/bins/mac/sk3wldbg_user.pmc
 
+# hexrays_hlight
+curl -o $IDA_PLUGINS_PATH/hexrays_hlight.py https://www.hex-rays.com/contests/2016/hexlight/hexrays_hlight.py
+
 # IDA-Function-Tagger
 git clone https://github.com/alessandrogario/IDA-Function-Tagger
 ln -s -f $IDA_PLUGINS_PATH/git/IDA-Function-Tagger/IDAFunctionTagger.py $IDA_PLUGINS_PATH/IDAFunctionTagger.py
