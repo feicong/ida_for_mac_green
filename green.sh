@@ -230,4 +230,7 @@ cp -f 6.95/IDASkins.pmc $IDA_PLUGINS_PATH/IDASkins.pmc
 cp -f 6.95/IDASkins.pmc64 $IDA_PLUGINS_PATH/IDASkins.pmc64
 cp -f 6.95/skin $IDA_INSTALL_PATH/skin
 
+# Tinytool
+git clone https://github.com/ThomasKing2014/ReverseTinytoolDemo
+ln -s -f $IDA_PLUGINS_PATH/git/ReverseTinytoolDemo/ELFARM32_lod.py $IDA_LOADERS_PATH/ELFARM32_lod.py
 
