@@ -234,3 +234,6 @@ cp -f 6.95/skin $IDA_INSTALL_PATH/skin
 git clone https://github.com/ThomasKing2014/ReverseTinytoolDemo
 ln -s -f $IDA_PLUGINS_PATH/git/ReverseTinytoolDemo/ELFARM32_lod.py $IDA_LOADERS_PATH/ELFARM32_lod.py
 
+# ida-arm-system-highlight
+git clone https://github.com/gdelugre/ida-arm-system-highlight
+
