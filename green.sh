@@ -170,9 +170,11 @@ cp -f py/hexrays_hlight.py $IDA_PLUGINS_PATH/hexrays_hlight.py
 # VMAttack
 git clone https://github.com/anatolikalysch/VMAttack
 echo 'export VMAttack=$IDA_PLUGINS_PATH/VMAttack' >> ~/.bash_profile
+source ~/.bash_profile
 python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" distorm3
 python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" idacute
 ln -s -f $IDA_PLUGINS_PATH/git/VMAttack/VMAttack_plugin_stub.py $IDA_PLUGINS_PATH/VMAttack_plugin_stub.py
+ln -s -f $IDA_PLUGINS_PATH/git/VMAttack $IDA_PLUGINS_PATH/VMAttack
 
 # BinDiff
 cp -f 6.95/zynamics_bindiff_4_3.pmc $IDA_PLUGINS_PATH/zynamics_bindiff_4_3.pmc
