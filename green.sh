@@ -39,7 +39,7 @@ ln -s -f $IDA_PLUGINS_PATH/git/nao/nao $IDA_PLUGINS_PATH/nao
 # idaemu
 # python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" unicorn
 git clone https://github.com/36hours/idaemu
-ln -s -f $IDA_PLUGINS_PATH/git/idaemu/idaemu.py $IDA_PLUGINS_PATH/idaemu.py
+ln -s -f $IDA_PLUGINS_PATH/git/idaemu/idaemu.py $IDA_PYTHON_PATH/idaemu.py
 
 # Rematch
 # python -m pip install rematch-idaplugin --target="$IDA_PLUGINS_PATH"
