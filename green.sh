@@ -243,3 +243,6 @@ ln -s -f $IDA_PLUGINS_PATH/git/ReverseTinytoolDemo/ELFARM32_lod.py $IDA_LOADERS_
 # ida-arm-system-highlight
 git clone https://github.com/gdelugre/ida-arm-system-highlight
 
+# golang_loader_assist
+git clone https://github.com/strazzere/golang_loader_assist
+
