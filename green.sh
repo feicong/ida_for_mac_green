@@ -246,3 +246,8 @@ git clone https://github.com/gdelugre/ida-arm-system-highlight
 # golang_loader_assist
 git clone https://github.com/strazzere/golang_loader_assist
 
+# LoadProcConfig
+git clone https://github.com/alexhude/LoadProcConfig
+cp -f $IDA_PLUGINS_PATH/git/LoadProcConfig/bin/LoadProcConfig.pmc $IDA_PLUGINS_PATH/LoadProcConfig.pmc
+cp -f $IDA_PLUGINS_PATH/git/LoadProcConfig/bin/LoadProcConfig.pmc64 $IDA_PLUGINS_PATH/LoadProcConfig.pmc64
+
