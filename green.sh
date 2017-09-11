@@ -8,6 +8,11 @@ export IDA_PYTHON_PATH=$IDA_INSTALL_PATH/python
 
 echo 'sys.path.append(os.path.join(sys.executable, IDAPYTHON_DYNLOAD_BASE, "python", "lib", "python2.7", "site-packages"))' >> $IDA_PYTHON_PATH/init.py
 
+function install_pylib() {
+    CFLAGS=-m32 LDFLAGS=-m32 python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" $1
+}
+
+install_pylib unicorn
 ln -s -f $IDA_PYTHON_PATH/lib/python2.7/site-packages/unicorn/lib/libunicorn.dylib $IDA_INSTALL_PATH/libunicorn.dylib
 ln -s -f $IDA_PYTHON_PATH/lib/python2.7/site-packages/unicorn/lib/libunicorn.dylib $IDA_INSTALL_PATH/libunicorn.1.dylib
 
@@ -17,13 +22,13 @@ cd git
 
 # findcrypt-yara
 #sudo python -m pip install yara-python
-python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" yara-python
+install_pylib yara-python
 git clone https://github.com/polymorf/findcrypt-yara
 ln -s -f $IDA_PLUGINS_PATH/git/findcrypt-yara/findcrypt3.py $IDA_PLUGINS_PATH/findcrypt3.py
 ln -s -f $IDA_PLUGINS_PATH/git/findcrypt-yara/findcrypt3.rules $IDA_PLUGINS_PATH/findcrypt3.rules
 
 # keypatch
-python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" keystone-engine
+install_pylib keystone-engine
 git clone https://github.com/keystone-engine/keypatch
 ln -s -f $IDA_PLUGINS_PATH/git/keypatch/keypatch.py $IDA_PLUGINS_PATH/keypatch.py
 
@@ -32,17 +37,17 @@ git clone https://github.com/a1ext/auto_re
 ln -s -f $IDA_PLUGINS_PATH/git/auto_re/auto_re.py $IDA_PLUGINS_PATH/auto_re.py
 
 # nao
-python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" unicorn
+# install_pylib unicorn
 git clone https://github.com/tkmru/nao
 ln -s -f $IDA_PLUGINS_PATH/git/nao/nao $IDA_PLUGINS_PATH/nao
 
 # idaemu
-# python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" unicorn
+# install_pylib unicorn
 git clone https://github.com/36hours/idaemu
 ln -s -f $IDA_PLUGINS_PATH/git/idaemu/idaemu.py $IDA_PYTHON_PATH/idaemu.py
 
 # Rematch
-# python -m pip install rematch-idaplugin --target="$IDA_PLUGINS_PATH"
+# CFLAGS=-m32 LDFLAGS=-m32  pip install rematch-idaplugin --target="$IDA_PLUGINS_PATH"
 git clone  --recurse-submodules https://github.com/nirizr/rematch
 ln -s -f $IDA_PLUGINS_PATH/git/rematch/idaplugin/plugin_rematch.py $IDA_PLUGINS_PATH/plugin_rematch.py
 ln -s -f $IDA_PLUGINS_PATH/git/rematch/idaplugin/rematch $IDA_PLUGINS_PATH/rematch
@@ -71,6 +76,7 @@ ln -s -f $IDA_PLUGINS_PATH/git/ida_ifl/ifl.py $IDA_PLUGINS_PATH/ifl.py
 
 # IDAtropy
 git clone https://github.com/danigargu/IDAtropy
+install_pylib matplotlib
 ln -s -f $IDA_PLUGINS_PATH/git/IDAtropy/IDAtropy.py $IDA_PLUGINS_PATH/IDAtropy.py
 
 # flare-ida
@@ -142,7 +148,7 @@ git clone https://github.com/Kerrigan29a/idapython_virtualenv
 
 # nrs
 #git clone https://github.com/isra17/nrs
-CFLAGS=-m32 LDFLAGS=-m32 python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" nrs
+install_pylib nrs
 
 # FRIEND
 # git clone https://github.com/alexhude/FRIEND
@@ -175,8 +181,8 @@ cp -f py/hexrays_hlight.py $IDA_PLUGINS_PATH/hexrays_hlight.py
 git clone https://github.com/anatolikalysch/VMAttack
 echo 'export VMAttack=$IDA_PLUGINS_PATH/VMAttack' >> ~/.bash_profile
 source ~/.bash_profile
-python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" distorm3
-python -m pip install --ignore-installed --no-cache-dir --install-option="--prefix=$IDA_PYTHON_PATH" idacute
+install_pylib distorm3
+install_pylib idacute
 ln -s -f $IDA_PLUGINS_PATH/git/VMAttack/VMAttack_plugin_stub.py $IDA_PLUGINS_PATH/VMAttack_plugin_stub.py
 ln -s -f $IDA_PLUGINS_PATH/git/VMAttack $IDA_PLUGINS_PATH/VMAttack
 
