@@ -82,10 +82,11 @@ ln -s -f $IDA_PLUGINS_PATH/git/IDAtropy/IDAtropy.py $IDA_PLUGINS_PATH/IDAtropy.p
 
 # flare-ida
 git clone https://github.com/fireeye/flare-ida
-ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/apply_callee_type_plugin.py $IDA_PLUGINS_PATH/apply_callee_type_plugin.py
-ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/shellcode_hashes_search_plugin.py $IDA_PLUGINS_PATH/shellcode_hashes_search_plugin.py
-ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/stackstrings_plugin.py $IDA_PLUGINS_PATH/stackstrings_plugin.py
-ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/struct_typer_plugin.py $IDA_PLUGINS_PATH/struct_typer_plugin.py
+ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/plugins/apply_callee_type_plugin.py $IDA_PLUGINS_PATH/apply_callee_type_plugin.py
+ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/plugins/shellcode_hashes_search_plugin.py $IDA_PLUGINS_PATH/shellcode_hashes_search_plugin.py
+ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/plugins/stackstrings_plugin.py $IDA_PLUGINS_PATH/stackstrings_plugin.py
+ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/plugins/struct_typer_plugin.py $IDA_PLUGINS_PATH/struct_typer_plugin.py
+ln -s -f $IDA_PLUGINS_PATH/git/flare-ida/python/flare $IDA_PYTHON_PATH/flare
 
 # uEmu
 git clone https://github.com/alexhude/uEmu
