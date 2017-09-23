@@ -1,6 +1,7 @@
 # ida plugins installer by fei_cong.
 
 export IDA_INSTALL_PATH=/Applications/IDAPro6.95/idaq.app/Contents/MacOS
+#idaapi.idadir(idaapi.PLG_SUBDIR)
 export IDA_PLUGINS_PATH=$IDA_INSTALL_PATH/plugins
 export IDA_PROCS_PATH=$IDA_INSTALL_PATH/procs
 export IDA_LOADERS_PATH=$IDA_INSTALL_PATH/loaders
@@ -256,4 +257,7 @@ git clone https://github.com/strazzere/golang_loader_assist
 git clone https://github.com/alexhude/LoadProcConfig
 cp -f $IDA_PLUGINS_PATH/git/LoadProcConfig/bin/LoadProcConfig.pmc $IDA_PLUGINS_PATH/LoadProcConfig.pmc
 cp -f $IDA_PLUGINS_PATH/git/LoadProcConfig/bin/LoadProcConfig.pmc64 $IDA_PLUGINS_PATH/LoadProcConfig.pmc64
+
+# IDAPythonEmbeddedToolkit
+git clone https://github.com/maddiestone/IDAPythonEmbeddedToolkit
 
