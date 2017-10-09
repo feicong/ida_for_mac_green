@@ -106,6 +106,9 @@ install_name_tool -change libunicorn.1.dylib @executable_path/libunicorn.1.dylib
 install_name_tool -change libunicorn.1.dylib @executable_path/libunicorn.1.dylib $IDA_PLUGINS_PATH/sk3wldbg_user.pmc64
 
 
+# hexrays_hlight
+curl -o $IDA_PLUGINS_PATH/hexrays_hlight.py https://www.hex-rays.com/contests/2016/hexlight/hexrays_hlight.py
+
 # IDA-Function-Tagger
 git clone https://github.com/alessandrogario/IDA-Function-Tagger
 ln -s -f $IDA_PLUGINS_PATH/git/IDA-Function-Tagger/IDAFunctionTagger.py $IDA_PLUGINS_PATH/IDAFunctionTagger.py
